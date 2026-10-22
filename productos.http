@@ -1,0 +1,80 @@
+### productos.http
+
+```http
+@baseUrl = http://127.0.0.1:8000
+
+### ==========================================
+### PRODUCTOS
+### ==========================================
+
+### 1. Listar productos
+GET {{baseUrl}}/productos/
+
+### 2. Crear producto
+POST {{baseUrl}}/productos/
+Content-Type: application/json
+
+{
+  "nombre": "Teclado mecanico",
+  "descripcion": "Teclado para computadora",
+  "precio_base": "45000",
+  "imagen_url": [],
+  "disponible": true
+}
+
+### 3. Buscar producto por ID
+GET {{baseUrl}}/productos/1
+
+### 4. Actualizar producto
+PUT {{baseUrl}}/productos/1
+Content-Type: application/json
+
+{
+  "nombre": "Teclado mecanico actualizado",
+  "precio_base": "50000"
+}
+
+### 5. Probar nombre duplicado
+POST {{baseUrl}}/productos/
+Content-Type: application/json
+
+{
+  "nombre": "Teclado mecanico actualizado",
+  "descripcion": "Prueba de duplicados",
+  "precio_base": "30000",
+  "imagen_url": [],
+  "disponible": true
+}
+
+### 6. Eliminar producto
+DELETE {{baseUrl}}/productos/1
+
+
+### ==========================================
+### PRODUCTO-CATEGORIA
+### ==========================================
+
+### 7. Listar asociaciones
+GET {{baseUrl}}/producto-categoria/
+
+### 8. Crear asociacion entre producto y categoria
+POST {{baseUrl}}/producto-categoria/
+Content-Type: application/json
+
+{
+  "producto_id": 1,
+  "categoria_id": 1
+}
+
+### 9. Probar asociacion duplicada
+POST {{baseUrl}}/producto-categoria/
+Content-Type: application/json
+
+{
+  "producto_id": 1,
+  "categoria_id": 1
+}
+
+### 10. Eliminar asociacion
+DELETE {{baseUrl}}/producto-categoria/1/1
+```
